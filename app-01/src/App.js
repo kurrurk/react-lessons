@@ -1,4 +1,5 @@
-import Costs from "./components/Costs";
+//import React from 'react'; // этот компонент в новых версиях можно опустить, но это не точно.
+import Costs from "./components/Costs/Costs";
 
 const costs = [
   {
@@ -18,13 +19,22 @@ const costs = [
   }
 ]
 
-function App() {
+const App = () => { // стрелочная функция
+
+  /* // старый синтаксис
+  return React.createElement(
+    "div", 
+    {}, 
+    React.createElement("h1",{},"Начнем изучение React!!!"),
+    React.createElement(Costs,{costs:costs}),
+  );
+  */
   return (
     <div className="App">
-      <h1>Hello world!!!</h1>
+      <h1>Начнем изучение React!!!</h1>
       <Costs costs={costs} />
     </div>
-  );
+  ); 
 }
 
 export default App;
