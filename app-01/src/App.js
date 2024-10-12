@@ -1,5 +1,6 @@
 //import React from 'react'; // этот компонент в новых версиях можно опустить, но это не точно.
 import Costs from "./components/Costs/Costs";
+import NewCost from "./components/NewCost/NewCost";
 
 const costs = [
   {
@@ -31,7 +32,7 @@ const App = () => { // стрелочная функция
   */
   return (
     <div className="App">
-      <h1>Начнем изучение React!!!</h1>
+      <NewCost />
       <Costs costs={costs} />
     </div>
   ); 
