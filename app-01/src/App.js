@@ -4,16 +4,19 @@ import NewCost from "./components/NewCost/NewCost";
 
 const costs = [
   {
+    id: 'c1',
     date : new Date(2024, 2, 15),
     description : "Kühlschrank",
     ammount : 999.99
   },
   {
+    id: 'c2',
     date : new Date(2024, 4, 11),
     description : "Laptop",
     ammount : 1500.45
   },
   {
+    id: 'c3',
     date : new Date(2024, 6, 11),
     description : "Jeans",
     ammount : 69.85
@@ -30,9 +33,15 @@ const App = () => { // стрелочная функция
     React.createElement(Costs,{costs:costs}),
   );
   */
+
+  const addCostHandler = (cost) => {
+    console.log(cost);
+    console.log('App Component');
+  }
+
   return (
     <div className="App">
-      <NewCost />
+      <NewCost onAddCost={addCostHandler}/>
       <Costs costs={costs} />
     </div>
   ); 
