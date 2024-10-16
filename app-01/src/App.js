@@ -1,25 +1,26 @@
 //import React from 'react'; // этот компонент в новых версиях можно опустить, но это не точно.
+import { useState } from "react";
 import Costs from "./components/Costs/Costs";
 import NewCost from "./components/NewCost/NewCost";
 
-const costs = [
+const INITIAL_COSTS = [
   {
     id: 'c1',
     date : new Date(2024, 2, 15),
     description : "Kühlschrank",
-    ammount : 999.99
+    amount : 999.99
   },
   {
     id: 'c2',
     date : new Date(2024, 4, 11),
     description : "Laptop",
-    ammount : 1500.45
+    amount : 1500.45
   },
   {
     id: 'c3',
     date : new Date(2024, 6, 11),
     description : "Jeans",
-    ammount : 69.85
+    amount : 69.85
   }
 ]
 
@@ -34,9 +35,12 @@ const App = () => { // стрелочная функция
   );
   */
 
+  const [costs, setSosts] = useState(INITIAL_COSTS);
+
   const addCostHandler = (cost) => {
-    console.log(cost);
-    console.log('App Component');
+    setSosts(prevCosts => {
+      return [cost, ...prevCosts]
+    });
   }
 
   return (
