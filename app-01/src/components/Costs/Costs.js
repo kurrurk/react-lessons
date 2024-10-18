@@ -12,16 +12,58 @@ const Costs = (props) => {
         setSelectedYear(year);        
     }
 
+    const filteredCosts = props.costs.filter((cost) => { 
+    
+        return cost.date.getFullYear().toString() === selectedYear 
+    
+    }) ;
+
+    let costsContent = <p>Dieses Jahr fallen keine Kosten an</p>;
+
+    if (filteredCosts.length > 0) {
+        costsContent = filteredCosts.map( cost => (
+                <CostItem 
+                    key={cost.id}
+                    date={cost.date}
+                    description={cost.description}
+                    amount={cost.amount}
+                />
+            ) 
+        )
+    }
+
     return (
         <div className="costs">
            <CostsFilter year={selectedYear} onChangeYear={onChangeYearHandler}/> 
            <Card> 
-                {props.costs.filter((cost) => { return cost.date.getFullYear().toString() === selectedYear }).map( cost => <CostItem 
-                                            key={cost.id}
-                                            date={cost.date}
-                                            description={cost.description}
-                                            amount={cost.amount}
-                /> )}               
+                {/* ------------------- вариант 1 ----------------------- */}
+                {/* filteredCosts.length === 0 ? <p>Dieses Jahr fallen keine Kosten an</p> :
+                    
+                    filteredCosts.map( cost => (
+                            <CostItem 
+                                key={cost.id}
+                                date={cost.date}
+                                description={cost.description}
+                                amount={cost.amount}
+                            />
+                        ) 
+                    )
+                */}
+                {/* ------------------- вариант 2 ----------------------- */}
+                {/* filteredCosts.length === 0 && <p>Dieses Jahr fallen keine Kosten an</p> */}  
+                {/* filteredCosts.length > 0 && 
+                    filteredCosts.map( cost => (
+                            <CostItem 
+                                key={cost.id}
+                                date={cost.date}
+                                description={cost.description}
+                                amount={cost.amount}
+                            />
+                        ) 
+                    )
+                */}
+                {/* ------------------- вариант 3 ----------------------- */}
+                {costsContent}                         
             </Card> 
         </div>        
     );

@@ -31,8 +31,8 @@ const INITIAL_COSTS = [
   {
     id: 'c5',
     date : new Date(2018, 6, 11),
-    description : "T-schirt",
-    amount : 69.85
+    description : "T-shirt",
+    amount : 9.85
   }
 ]
 
