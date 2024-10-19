@@ -109,6 +109,7 @@ const CostForm = (props) => {
 
             <div className='new-cost__actions'>
                  <button type='submit'>Artikel einfügen</button>
+                 <button type='button' onClick={props.onCancel}>Stornieren</button>
             </div>  
             
             </div>  
