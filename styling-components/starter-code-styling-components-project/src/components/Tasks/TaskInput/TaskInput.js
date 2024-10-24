@@ -21,14 +21,18 @@ const TaskInput = (props) => {
     props.onAddTask(inputText);
     setInputText('');
   };
+  
+  // inline styling
+  // <label style={{color: !isInputValid ? 'red' : 'black' }} >Задачи</label>
+  /* <input value={inputText} style={{
+          backgroundColor: !isInputValid ? '#ff000044' : 'transparent',
+          borderColor: !isInputValid ? 'red' : '' }} type="text" onChange={taskInputChangeHandler} /> */
 
   return (
     <form onSubmit={formSubmitHandler}>
-      <div className="form-control">
-        <label style={{color: !isInputValid ? 'red' : 'black' }} >Задачи</label>
-        <input value={inputText} style={{
-          backgroundColor: !isInputValid ? '#ff000044' : 'transparent',
-          borderColor: !isInputValid ? 'red' : '' }} type="text" onChange={taskInputChangeHandler} />
+      <div className={`form-control${!isInputValid ? ' invalid' : ''}`}>
+        <label>Задачи</label>
+        <input value={inputText} type="text" onChange={taskInputChangeHandler} />
       </div>
       <Button type="submit">Добавить Задачу</Button>
     </form>
