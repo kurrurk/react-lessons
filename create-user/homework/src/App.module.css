@@ -1,0 +1,12 @@
+.App {
+  padding: 1rem;
+  background-color: #ededed;
+  margin: 2rem auto;
+  width: 50rem;
+  min-height: calc( 100vh - 4rem );
+  max-width: 95%;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
+}
+

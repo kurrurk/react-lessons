@@ -1,0 +1,18 @@
+button {
+    width: 100%;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.7rem 2rem;
+    border: 1px solid #2a5b84;
+    background-color: #2a5b84;
+    color: #fefae1;
+    border-radius: 5px;
+    @media (min-width: 700px) {
+        width: auto;
+    }
+    &:hover, &:active {
+      background-color: #2a5c84b2;
+      border-color: #2a5c84b2;
+    }
+}

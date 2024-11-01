@@ -1,0 +1,42 @@
+.popup-wrapper {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: #000000ab;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .popup {
+        position: relative;
+        z-index: 1;
+        width: 45rem;
+        max-width: 95%;
+        .popup-header {
+            width: 100%;
+            margin: calc( -1rem - 3px) -1rem 1rem;
+            padding: 1rem;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            color: #fff;
+            background-color: #2a5b84;
+            h3 { font-weight: bold; }
+        }
+        .popup-content { 
+            padding: 2rem 0 3rem;
+        }
+    }
+    .popup-close-layer {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        z-index: 0;
+    }
+}
+
+
+
