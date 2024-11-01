@@ -11,8 +11,8 @@ const NewUserForm = (props) => {
         event.preventDefault();
 
         const userData = {
-          name : inputName,
-          age : inputAge
+          name : inputName.trim(),
+          age : inputAge.trim()
         };
     
         props.onSaveUserData(userData);
