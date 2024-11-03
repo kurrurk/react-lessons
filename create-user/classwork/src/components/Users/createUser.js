@@ -1,4 +1,4 @@
-import React, {useState, Fragment} from 'react';
+import React, {useState, useRef, Fragment} from 'react';
 import styles from "./CreateUser.module.css";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
@@ -6,22 +6,18 @@ import ErrorModal from '../UI/ErrorModal';
 //import Wrapper from '../helpers/Wrapper';
 
 const CreateUser = (props) => {
+    
+    const nameInputRef = useRef();
+    const ageInputRef = useRef();
 
-    const [inputName, setInputName] = useState('');
-    const [inputAge, setInputAge] = useState('');
     const [error, setError] = useState();
-
-    const nameChangeHandler = (event) => {
-        setInputName(event.target.value);
-    }
-
-    const ageChangeHandler = (event) => {
-        setInputAge(event.target.value);
-    }
 
     const createUserHandler = (event) => {
         event.preventDefault();
-        if (inputName.trim().length === 0 || inputAge.trim().length === 0) {
+        const inputUserName = nameInputRef.current.value;
+        const inputUserAge = ageInputRef.current.value;
+
+        if (inputUserName.trim().length === 0 || inputUserAge.trim().length === 0) {
             setError({
                 title : 'Falsche Eingabe',
                 message : 'Felder dürfen nicht leer sein',
@@ -29,7 +25,7 @@ const CreateUser = (props) => {
             return;
         }
 
-        if (+inputAge < 1) {
+        if (+inputUserAge < 1) {
             setError({
                 title : 'falsches Alter',
                 message : 'Das Alter muss größer als 0 sein',
@@ -37,10 +33,10 @@ const CreateUser = (props) => {
             return;
         }
 
-        props.onCreateUser(inputName.trim(), inputAge.trim())
-        
-        setInputAge('');
-        setInputName('');
+        props.onCreateUser(inputUserName.trim(), inputUserAge.trim())
+        nameInputRef.current.value = ''; // не рекомендуется?
+        ageInputRef.current.value = ''; // не рекомендуется?
+
     }
 
     const errorHandler = () => {
@@ -54,9 +50,9 @@ const CreateUser = (props) => {
             <Card className={styles.input}>
                 <form onSubmit={createUserHandler}>
                     <label htmlFor="name">Name</label>
-                    <input id="name" type="text" value={inputName} onChange={nameChangeHandler}/>
+                    <input id="name" type="text" ref={nameInputRef}/>
                     <label htmlFor="age">Alter</label>
-                    <input id="age" type="number" value={inputAge} onChange={ageChangeHandler}/>
+                    <input id="age" type="number" ref={ageInputRef}/>
                     <Button type="submit">Nutzer einfügen</Button>
                 </form>
             </Card>

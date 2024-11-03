@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import UserList from "./components/Users/UserList";
 import CreateUser from "./components/Users/createUser";
 
@@ -12,10 +12,12 @@ const App = () => {
     });
   }
 
-  return <div>
-    <CreateUser onCreateUser={createUserHandler}/>
-    <UserList users={userList}/>
-  </div>;
+  return (
+    <React.Fragment>
+      <CreateUser onCreateUser={createUserHandler}/>
+      <UserList users={userList}/>
+    </React.Fragment>
+  );
 };
 
 export default App;
