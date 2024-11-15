@@ -3,7 +3,7 @@ import styles from "./HeaderCartButton.module.css";
 
 const HeaderCartButton = (props) => {
 
-    return <button className={styles.button}>
+    return <button onClick={props.onClick} className={styles.button}>
         <span className={styles.icon}><CartIcon /></span>
         <span>Корзина</span>
         <span className={styles.badge}>2</span>
