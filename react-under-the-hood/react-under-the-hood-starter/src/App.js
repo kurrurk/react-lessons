@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import Button from "./components/UI/Button";
 import ParagraphOutput from "./components/Output/ParagraphOutput";
 
@@ -9,14 +9,14 @@ function App() {
 
   console.log('App Component!');
 
-  const toggleParagraph = () => {
+  const toggleParagraph = useCallback(() => {
     setIsParagraphShown(!isParagraphShown);
-  }
+  }, []);
 
   return (
     <div className="app">
       <h1>React под Капотом</h1>
-      <ParagraphOutput isShown={isParagraphShown}/>
+      <ParagraphOutput isShown={false}/>
       <Button onClick={toggleParagraph}>Show / Hide</Button>
     </div>
   );
