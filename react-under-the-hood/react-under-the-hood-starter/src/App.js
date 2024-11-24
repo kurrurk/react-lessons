@@ -6,18 +6,26 @@ import ParagraphOutput from "./components/Output/ParagraphOutput";
 function App() {
 
   const [isParagraphShown, setIsParagraphShown] = useState(false);
+  const [isTogglingActivated, setIsTogglingActivated] = useState(false);
 
   console.log('App Component!');
 
   const toggleParagraph = useCallback(() => {
-    setIsParagraphShown(!isParagraphShown);
-  }, []);
+    if (isTogglingActivated) {
+      setIsParagraphShown(precIsParagraphShown => !precIsParagraphShown);
+    }
+  }, [isTogglingActivated]);
+
+  const aktivateToggling = () => {
+    setIsTogglingActivated(true);
+  }
 
   return (
     <div className="app">
       <h1>React под Капотом</h1>
-      <ParagraphOutput isShown={false}/>
-      <Button onClick={toggleParagraph}>Show / Hide</Button>
+      <ParagraphOutput isShown={isParagraphShown}/>
+      <Button onClick={aktivateToggling}>Button aktivieren</Button>
+      <Button onClick={toggleParagraph}>zeigen / verstecken</Button>
     </div>
   );
 }

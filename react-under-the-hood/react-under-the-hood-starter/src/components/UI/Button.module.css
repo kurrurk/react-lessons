@@ -9,6 +9,10 @@
   border-radius: 30px;
 }
 
+.button:not(:last-child) {
+  margin-bottom: 15px;
+}
+
 .button:hover,
 .button:active {
   background: #095a6c;
