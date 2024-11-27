@@ -1,16 +1,14 @@
 import { Fragment, /* useState, useEffect, */ Component } from "react";
 import Customers from "./Customers";
 import styles from "./CustomerFilter.module.css";
-
-
-const DUMMY_CUSTOMERS = [
-  { id: "c1", name: "Дмитрий" },
-  { id: "c2", name: "Михаил" },
-  { id: "c3", name: "Ирина" },
-];
+import CustomersContext from "../store/customers-context";
+import ErrorBoundry from './ErrorBoundry';
 
 
 class CustomerFilter extends Component {
+
+  static contextType = CustomersContext;  
+
   constructor() {
     super();
     this.state = {
@@ -22,14 +20,14 @@ class CustomerFilter extends Component {
   componentDidMount() {
     // отправить HTTP запрос...
     this.setState({
-      filteredCustomers: DUMMY_CUSTOMERS,
+      filteredCustomers: this.context.customers,
     })
   }
 
   componentDidUpdate(prevProps, prevState) {
     if(prevState.filter !== this.state.filter) {
       this.setState({
-        filteredCustomers: DUMMY_CUSTOMERS.filter((customer) => customer.name.includes(this.state.filter))
+        filteredCustomers: this.context.customers.filter((customer) => customer.name.includes(this.state.filter))
       })
     }    
   }
@@ -46,8 +44,9 @@ class CustomerFilter extends Component {
         <div className={styles.filter}>
           <input type="search" onChange={this.filterHandler.bind(this)} />
         </div>
-
-        <Customers customers={this.state.filteredCustomers} />
+        <ErrorBoundry>
+          <Customers customers={this.state.filteredCustomers} />
+        </ErrorBoundry>
     </Fragment>
     )
   }
