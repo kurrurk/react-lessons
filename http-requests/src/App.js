@@ -37,10 +37,22 @@ function App() {
     setIsLoading(true);
     setError(null)
     try {    
-      const responce = await fetch('https://react-course-http-bf9b0-default-rtdb.firebaseio.com/');
+      const responce = await fetch('https://react-course-http-bf9b0-default-rtdb.firebaseio.com/jokes.json');
       if (!responce.ok) { throw new Error('Something go wrong...') }
       const data = await responce.json();
-      setJokes(data);      
+
+      const loadedJokes = [];
+
+      for (const key in data) {
+        loadedJokes.push({
+          id: key,
+          type: data[key].type,
+          setup: data[key].setup,
+          punchline: data[key].punchline,
+        })
+      }
+
+      setJokes(loadedJokes);      
     } catch(err) {
       setError(err.message);
     }
@@ -51,13 +63,25 @@ function App() {
     fetchJokesHandler();
   },[fetchJokesHandler])
   
-  const addJokeHandler = (joke) => {
-    console.log(joke)
+  const addJokeHandler = async(joke) => {
+    const responce = await fetch(
+      'https://react-course-http-bf9b0-default-rtdb.firebaseio.com/jokes.json', 
+      {
+        method: 'POST',
+        body: JSON.stringify(joke),
+        headers: {
+          'Content-type': 'application/json'
+        }
+      }
+    );
+
+    const data = await responce.json();
+    console.log(data);
   }
 
   let content = <p> Jokes not found... </p>;
   
-  if(jokes.length > 0) {
+  if(jokes !== null && jokes !== undefined && jokes.length > 0) {
     content = <JokeList jokes={jokes} />;
   }
 

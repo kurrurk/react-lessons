@@ -12,7 +12,7 @@ const AddJoke = (props) => {
     const joke = {
       type: typeRef.current.value,
       setup: setupRef.current.value,
-      punchlineRef: punchlineRef.current.value,
+      punchline: punchlineRef.current.value,
     }
 
     props.onAddJoke(joke);
