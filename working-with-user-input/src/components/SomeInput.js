@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const SomeInput = (props) => {
   const [enteredName, setEnteredName] = useState('');
   const [wasNameInputTouched,setWasNameInputTouched] = useState(false);
-  const [isFormValid, setIsFormValid] = useState(false);
+  // const [isFormValid, setIsFormValid] = useState(false);
 
   const [enteredEmail, setEnteredEmail] = useState('');
   const [wasEmailInputTouched,setWasEmailInputTouched] = useState(false);
@@ -19,13 +19,19 @@ const SomeInput = (props) => {
   const isEnteredEmailValid = validateEmail(enteredEmail.trim());
   const isEmailInputInvalid = !isEnteredEmailValid && wasEmailInputTouched; 
 
-  useEffect(() => {
-    if (isEnteredNameValid && isEnteredEmailValid) {
-      setIsFormValid(true);
-    } else {
-      setIsFormValid(false);
-    }
-  },[isEnteredNameValid, isEnteredEmailValid])
+  let isFormValid = false;
+
+  if (isEnteredNameValid && isEnteredEmailValid) {
+    isFormValid = true;
+  }
+
+  // useEffect(() => {
+  //   if (isEnteredNameValid && isEnteredEmailValid) {
+  //     setIsFormValid(true);
+  //   } else {
+  //     setIsFormValid(false);
+  //   }
+  // },[isEnteredNameValid, isEnteredEmailValid])
 
   const inputChangeHandler = event => {
     if (event.target.id === "name") { setEnteredName(event.target.value); }
