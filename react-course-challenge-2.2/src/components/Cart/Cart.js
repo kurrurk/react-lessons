@@ -1,6 +1,7 @@
 import Modal from "../UI/Modal";
 import styles from "./Cart.module.css";
 import { useContext, useState } from "react";
+import React from "react";
 import CartContext from "../../store/cart-context";
 import CartItem from "./CartItem";
 import SubmitOrder from "./SubmitOrder";
@@ -8,6 +9,8 @@ import SubmitOrder from "./SubmitOrder";
 const Cart = (props) => {
   const cartContext = useContext(CartContext);
   const [isSubmitOrderAvailable, setIsSubmitOrderAvailable] = useState(false);
+  const [isDataSubmiting, setIsDataSubmiting] = useState(false);
+  const [wasDataSendingSuccessful, setWasDataSendingSuccessful] = useState(false);
 
   const totalAmount = `$${Math.abs(cartContext.totalAmount).toFixed(2)}`;
   const hasItems = cartContext.items.length > 0;
@@ -22,7 +25,23 @@ const Cart = (props) => {
 
   const orderHandler = () => {
     setIsSubmitOrderAvailable(true);
-  }
+  };
+
+  const SubmitOrderHandler = async (userData) => {
+    setIsDataSubmiting(true);
+
+    await fetch('https://react-course-http-bf9b0-default-rtdb.firebaseio.com/orders.json', {
+        method: "POST",
+        body: JSON.stringify({
+          user:userData,
+          orderedMeals: cartContext.items,
+      })
+    });
+
+    setIsDataSubmiting(false);
+    setWasDataSendingSuccessful(true);
+    cartContext.clearCart();
+  };
 
   const cartItems = (
     <ul className={styles["cart-items"]}>
@@ -44,19 +63,41 @@ const Cart = (props) => {
         <button className={styles["button--alt"]} onClick={props.onHideCart}>
           Закрыть
         </button>
-        {hasItems && <button className={styles.button} onClick={orderHandler}>Заказать</button>}
+        {!isDataSubmiting && !wasDataSendingSuccessful && hasItems && <button className={styles.button} onClick={orderHandler}>Заказать</button>}
       </div>
   );
 
-  return (
-    <Modal onHideCart={props.onHideCart}>
+  const cartModalContent = (
+    <React.Fragment>
       {cartItems}
       <div className={styles.total}>
         <span>Итого</span>
         <span>{totalAmount}</span>
       </div>
-      {isSubmitOrderAvailable && <SubmitOrder onCancel={props.onHideCart} />}
+      {isSubmitOrderAvailable && <SubmitOrder onSubmit={SubmitOrderHandler} onCancel={props.onHideCart} />}
       {!isSubmitOrderAvailable && modalButtons}
+    </React.Fragment>
+  );
+
+  const dataSubmittingCartModalContent = (
+    <React.Fragment>
+      <p>Отправка данных заказа...</p>
+      {modalButtons}
+    </React.Fragment>
+  );
+
+  const dataWasSubmittedCartModalContent = (
+    <React.Fragment>
+      <p>Ваш заказ успешно отправлен!!!</p>
+      {modalButtons}
+    </React.Fragment>
+  );
+
+  return (
+    <Modal onHideCart={props.onHideCart}>
+      {!isDataSubmiting && !wasDataSendingSuccessful && cartModalContent}
+      {isDataSubmiting && dataSubmittingCartModalContent}
+      {wasDataSendingSuccessful && dataWasSubmittedCartModalContent}
     </Modal>
   );
 };

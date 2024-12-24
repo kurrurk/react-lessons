@@ -1,11 +1,11 @@
 .form {
-  margin: 1rem 0;
-  height: 15rem;
+  margin: 1rem 0 0;
   overflow: auto;
 }
 
 .control {
   margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 .control label {
@@ -23,8 +23,9 @@
 
 .actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 2rem;
+  margin-top: 1rem;
 }
 
 .actions button {
