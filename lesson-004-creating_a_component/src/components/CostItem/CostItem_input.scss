@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: all;
+}
+
+.cost-item {
+  @apply flex justify-between items-center bg-base-300 text-primary border border-primary rounded-sm p-3 my-4;
+  .cost-item__description {
+    @apply flex flex-col gap-4 items-end justify-start flex-1;
+    flex-flow: column-reverse;
+    @media (min-width: 580px) {
+      @apply flex-row items-center justify-start;
+    }
+  }
+  h2 {
+    @apply flex-1 text-primary text-base mx-2 my-0;
+    @media (min-width: 580px) {
+      @apply text-xl;
+    }
+  }
+  .cost-item__price {
+    @apply border border-accent-content rounded-sm bg-accent text-accent-content text-base font-bold p-1;
+    @media (min-width: 580px) {
+      @apply text-xl py-1 px-3;
+    }
+  }
+}
