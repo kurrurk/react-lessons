@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: all;
+}
+.costs {
+  @apply flex flex-col w-6xl max-w-[95%] border border-dotted border-primary rounded-md bg-base-200 space-y-3 p-3 my-8 mx-auto;
+}
