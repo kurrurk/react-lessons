@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: all;
+}
+.card {
+  @apply flex-row border border-primary shadow-sm shadow-black;
+}
