@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: all;
+}
+.new-cost {
+  @apply w-6xl max-w-[95%] border-dotted rounded-md bg-base-200 p-4 my-6 mx-auto text-center;
+  button {
+    @apply cursor-pointer btn btn-soft btn-primary border-primary rounded-sm py-4 px-8.5 mr-2.5;
+  }
+}
