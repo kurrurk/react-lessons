@@ -1,0 +1,14 @@
+.new-cost__controls {
+  @apply flex flex-wrap gap-4 mb-4 text-left;
+  .new-cost__control {
+    label {
+      @apply font-bold mb-2 block;
+    }
+    input {
+      @apply p-2 rounded-sm w-xs max-w-full;
+    }
+  }
+  .new-cost__actions {
+    @apply text-left;
+  }
+}
