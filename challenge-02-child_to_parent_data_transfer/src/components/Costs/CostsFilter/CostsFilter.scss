@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: all;
+}
+.costs-filter {
+  @apply text-primary py-0 px-4;
+  .costs-filter__control {
+    @apply flex items-center justify-between w-full my-3 mx-0;
+  }
+  label {
+    @apply font-bold;
+  }
+  select {
+    @apply select border-2 border-primary select-primary w-auto rounded-sm font-bold py-1 px-10;
+  }
+}
