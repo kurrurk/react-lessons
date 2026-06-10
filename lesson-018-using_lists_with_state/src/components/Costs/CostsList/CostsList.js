@@ -16,6 +16,7 @@ const CostsList = (props) => {
         <CostsFilter year={selectedYear} onChangeYear={yearChangeHandler} />
         {props.costs.map((cost) => (
           <CostItem
+            key={cost.id}
             date={cost.date}
             description={cost.description}
             amount={cost.amount}
