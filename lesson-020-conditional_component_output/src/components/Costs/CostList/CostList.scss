@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: all;
+}
+.cost-list {
+  @apply flex flex-col space-y-3 list-none p-0;
+}
+
+.cost-list__fallback {
+  @apply p-2 text-info;
+}
