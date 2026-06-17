@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: all;
+}
+.diagram {
+  @apply justify-around p-4 rounded-sm h-36 bg-base-300 text-center;
+}

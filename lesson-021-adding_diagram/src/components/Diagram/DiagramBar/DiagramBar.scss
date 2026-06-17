@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: all;
+}
+.diagram-bar {
+  @apply h-full w-[10px] flex flex-col items-center;
+  .diagram-bar__inner {
+    @apply h-full w-full flex flex-col justify-end border border-primary rounded-sm bg-base-100 overflow-hidden mb-1;
+    .diagram-bar__fill {
+      @apply w-full bg-primary;
+      transition: all 0.3s ease-out;
+    }
+  }
+  .diagram-bar__label {
+    @apply text-primary font-bold text-xs text-center;
+  }
+}
