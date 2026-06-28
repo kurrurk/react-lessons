@@ -1,11 +1,19 @@
 .button {
-  font: inherit;
-  padding: 0.5rem 1.5rem;
-  color: white;
-  background: #00358b;
-  border-radius: 4px;
-  box-shadow: 0 0 4px rgba(50, 50, 50, 0.25);
+  padding: 1rem 2rem;
+
+  border: none;
+
+  border-radius: 12px;
+
+  color: --panel;
+
+  background: linear-gradient(90deg, #1c62ff, #37d6ff);
+
   cursor: pointer;
+
+  transition: 0.25s;
+
+  box-shadow: 0 0 10px rgba(55, 214, 255, 0.3);
 }
 
 .button:focus {
@@ -14,6 +22,7 @@
 
 .button:hover,
 .button:active {
-  background: #245fbd;
-  box-shadow: 0 0 8px rgba(50, 50, 50, 0.25);
+  transform: translateY(-2px);
+
+  box-shadow: 0 0 20px rgba(55, 214, 255, 0.6);
 }

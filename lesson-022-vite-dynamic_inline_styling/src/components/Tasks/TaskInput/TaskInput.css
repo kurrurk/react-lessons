@@ -1,5 +1,5 @@
 .form-control {
-  margin: 0.5rem 0;
+  margin: 1rem 0;
 }
 
 .form-control label {
@@ -9,16 +9,25 @@
 }
 
 .form-control input {
-  display: block;
   width: 100%;
-  border: 1px solid #ccc;
-  font: inherit;
-  line-height: 1.5rem;
-  padding: 0 0.25rem;
+
+  padding: 1rem;
+
+  border-radius: 10px;
+
+  border: 1px solid #28506e;
+
+  background: #081624;
+
+  color: white;
+
+  transition: 0.3s;
 }
 
 .form-control input:focus {
   outline: none;
-  background: #c8e1e4;
-  border-color: #00358b;
+
+  border-color: var(--primary);
+
+  box-shadow: 0 0 12px rgba(55, 214, 255, 0.45);
 }

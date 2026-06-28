@@ -1,9 +1,25 @@
 .task-item {
+  list-style: none;
+
+  padding: 1.2rem;
+
   margin: 1rem 0;
-  background: #00358b;
-  box-shadow: 0 2px 8px rgba(50, 50, 50, 0.25);
-  border-radius: 8px;
-  color: white;
-  padding: 1rem 2rem;
+
+  border-radius: 14px;
+
+  background: var(--panel-light);
+
+  border-left: 4px solid var(--primary);
+
   cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.task-item:hover {
+  transform: translateX(6px);
+
+  border-left-color: var(--secondary);
+
+  box-shadow: 0 0 15px rgba(55, 214, 255, 0.25);
 }
