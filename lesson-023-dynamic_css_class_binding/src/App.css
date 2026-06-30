@@ -1,0 +1,20 @@
+#tasks {
+  width: 30rem;
+  max-width: 80%;
+  margin: 4rem auto;
+}
+
+#task-form {
+  width: 700px;
+  max-width: 90%;
+
+  margin: auto;
+
+  padding: 2rem;
+
+  border-radius: 18px;
+
+  background: var(--panel);
+
+  border: 1px solid rgba(74, 217, 253, 0.2);
+}
