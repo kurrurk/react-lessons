@@ -3,6 +3,7 @@ import styled from "styled-components";
 //tagged template literals
 const Button = styled.button
 /*css*/ `
+  width: 100%;
   padding: 1rem 2rem;
   border: none;
   border-radius: 12px;
@@ -11,6 +12,10 @@ const Button = styled.button
   cursor: pointer;
   transition: 0.25s;
   box-shadow: 0 0 10px rgba(55, 214, 255, 0.3);
+
+  @media (min-width: 480px) {
+    width: auto;
+  }
 
   &:focus {
     outline: none;
